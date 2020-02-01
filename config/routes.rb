@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+  }
+  devise_for :end_users, controllers: {
+    sessions:      'end_users/sessions',
+    passwords:     'end_users/passwords',
+    registrations: 'end_users/registrations'
+  }
   root 'homes#top'
   resources :items, only: [:index, :show]
-  devise_for :end_users
   resources :end_users, only: [:show, :edit, :update]
   get 'end_users/:id', to: 'end_users#confirm'
   resources :cart_items, only: [:index, :update, :destroy, :create]
@@ -12,9 +19,6 @@ Rails.application.routes.draw do
   resources :addresses, only: [:index, :update, :create, :destroy, :edit]
   
   namespace :admin do
-    get 'login', to: 'devise/sessions#new', as: :new_user_session
-    post 'login', to: 'devise/sessions#create', as: :user_session
-    delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
     get 'top', to: 'admins#top'
     resources :items
     resources :genres, only: [:show, :index, :create, :edit, :update]
