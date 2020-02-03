@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-class Admins::SessionsController < Devise::SessionsController
+
+# 今回の場合deviseを追加しているのでここにdeviseを追加してあげる必要がある
+class Admins::Devise::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
