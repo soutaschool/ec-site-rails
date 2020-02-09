@@ -1,0 +1,25 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <nav class='nav navbar-nav navbar-left' >
+      <span>ECサイト</span>
+    </nav>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if end_user_signed_in? %>  <!-- ユーザーが現在サインインをしているか？　-->
+          <li><%= link_to ' Mypage', end_user_path(current_end_user),class: 'glyphicon glyphicon-home' %></li>
+          <li>Cart</li> <!--カート一覧-->
+          <li><%= link_to ' logout', destroy_end_user_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
+        <% elsif admin_signed_in? %>
+          <li>Order</li> <!--受注一覧-->
+          <li>NewItem</li> <!--商品の登録-->
+          <li>Logout</li> <!--ログアウト-->
+        <% else %>
+          <li>signup</li> <!--エンドユーザー会員登録へのリンク-->
+          <li>login</li> <!--エンドユーザーログインへのリンク-->
+          <li><%= link_to ' logout', destroy_end_user_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+
