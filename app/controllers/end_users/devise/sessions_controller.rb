@@ -16,7 +16,7 @@ class EndUsers::Devise::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   def after_sign_out_path_for(resource)
-    root_path 
+    end_user_session_path
   end
 
   # ここの部分でログイン後の遷移先を定義
