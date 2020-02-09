@@ -15,9 +15,9 @@ class EndUsers::Devise::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def after_sign_out_path_for(resource)
+    root_path 
+  end
 
   # ここの部分でログイン後の遷移先を定義
   def after_sign_in_path_for(resource) 
@@ -27,7 +27,8 @@ class EndUsers::Devise::SessionsController < Devise::SessionsController
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-   def configure_sign_in_params
-     devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
-   end
+   def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email]) 
+  end
 end

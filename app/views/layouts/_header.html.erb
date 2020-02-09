@@ -6,10 +6,9 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if end_user_signed_in? %>  <!-- ユーザーが現在サインインをしているか？　-->
-          <!--li><%= link_to ' Home',user_path(current_user),class: 'glyphicon glyphicon-home home' %></li-->
-          <li>Home</li> <!--マイページ-->
+          <li><%= link_to ' Home', end_user_path(current_user.id), method: :delete,class: 'glyphicon glyphicon-home' %></li>
           <li>Cart</li> <!--カート一覧-->
-          <li>Logout</li> <!--ログアウト-->
+          <li><%= link_to ' logout', destroy_end_user_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
         <% elsif admin_signed_in? %>
           <li>Order</li> <!--受注一覧-->
           <li>NewItem</li> <!--商品の登録-->
@@ -17,6 +16,7 @@
         <% else %>
           <li>signup</li> <!--エンドユーザー会員登録へのリンク-->
           <li>login</li> <!--エンドユーザーログインへのリンク-->
+          <li><%= link_to ' logout', destroy_end_user_session_path, method: :delete,class: 'glyphicon glyphicon-log-out logout' %></li>
         <% end %>
       </ul>
     </nav>
