@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'orders/done', to: 'orders#done'
   resources :addresses, only: [:index, :update, :create, :destroy, :edit]
   
-  namespace :admin do
+  namespace :admins do
     get 'top', to: 'admins#top'
     resources :items
     resources :genres, only: [:show, :index, :create, :edit, :update]
@@ -27,5 +27,3 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
   end
 end
-
-# fs
