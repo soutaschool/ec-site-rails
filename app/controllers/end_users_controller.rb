@@ -18,7 +18,7 @@ class EndUsersController < ApplicationController
     end
 
     def destroy
-        @end_user = EndUser.find(params[:id])
+        @end_user = EndUser.with_deleted.find(params[:id])
         @end_user.destroy
         redirect_to root_path
     end

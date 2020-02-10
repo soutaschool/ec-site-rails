@@ -1,0 +1,6 @@
+<h3><strong>商品登録画面</strong></h3>
+<%= form_with model: @item  do |f| %>
+  <div col-md-7>
+  <%= f.attachment_field :image, class: 'btn btn-primary'%>
+  </div>
+<% end %>

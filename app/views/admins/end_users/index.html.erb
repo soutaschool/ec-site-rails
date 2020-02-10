@@ -11,12 +11,15 @@
   </thead>
 
   <tbody>
+  <%# 現状のままだと退会したユーザーは表示されなくなっている %>
     <% @end_users.each do |end_user| %> 
       <tr>
         <td><%= end_user.id %></td>
         <td><%= end_user.last_name %> <%= end_user.first_name %></td>
         <td><%= end_user.email %></td>
-        <td></td>
+        <td><% if end_user == EndUser.with_deleted %>
+          退会済み
+        <% end %></td>
       </tr>
     <% end %>
   </tbody>
