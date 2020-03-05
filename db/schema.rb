@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_100837) do
     t.string "address"
     t.string "postal_code"
     t.string "phone_number"
-    t.boolean "user_flag"
+    t.boolean "user_flag", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"

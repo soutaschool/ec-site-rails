@@ -38,7 +38,7 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       t.string :address
       t.string :postal_code
       t.string :phone_number
-      t.boolean :user_flag
+      t.boolean :user_flag, default: false, null: false
       t.timestamps null: false
     end
 
