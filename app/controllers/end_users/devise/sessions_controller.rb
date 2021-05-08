@@ -20,15 +20,15 @@ class EndUsers::Devise::SessionsController < Devise::SessionsController
   end
 
   # ここの部分でログイン後の遷移先を定義
-  def after_sign_in_path_for(resource) 
-    end_user_path(resource) 
+  def after_sign_in_path_for(resource)
+    end_user_path(resource)
   end
 
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-   def configure_permitted_parameters
+  def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email]) 
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
   end
 end

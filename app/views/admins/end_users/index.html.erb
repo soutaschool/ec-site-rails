@@ -2,27 +2,27 @@
 
 <table class="table">
   <thead>
-    <tr>
-      <th>顧客id</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
+  <tr>
+    <th>顧客id</th>
+    <th>氏名</th>
+    <th>メールアドレス</th>
+    <th>ステータス</th>
+  </tr>
   </thead>
 
   <tbody>
   <%# 現状のままだと退会したユーザーは表示されなくなっている %>
-    <% @end_users.each do |end_user| %> 
-      <tr>
-        <td><%= end_user.id %></td>
-        <td><%= link_to "#{end_user.last_name } #{end_user.first_name}", admins_end_user_path(end_user.id) %></td>
-        <td><%= end_user.email %></td>
-        <% if end_user.deleted_at? %>
-           <td>退会済み</td>
-        <% else %>
-            <td>有効</td>
-        <% end %>
-      </tr>
-    <% end %>
+  <% @end_users.each do |end_user| %>
+    <tr>
+      <td><%= end_user.id %></td>
+      <td><%= link_to "#{end_user.last_name } #{end_user.first_name}", admins_end_user_path(end_user.id) %></td>
+      <td><%= end_user.email %></td>
+      <% if end_user.deleted_at? %>
+        <td>退会済み</td>
+      <% else %>
+        <td>有効</td>
+      <% end %>
+    </tr>
+  <% end %>
   </tbody>
 </table>

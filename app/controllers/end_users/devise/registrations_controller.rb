@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class EndUsers::Devise::RegistrationsController < Devise::RegistrationsController
-   before_action :configure_sign_up_params, if: :devise_controller? #only: [:create]
-   before_action :configure_account_update_params, if: :devise_controller? #only: [:update]
+  before_action :configure_sign_up_params, if: :devise_controller? #only: [:create]
+  before_action :configure_account_update_params, if: :devise_controller? #only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -41,22 +41,22 @@ class EndUsers::Devise::RegistrationsController < Devise::RegistrationsControlle
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-   def configure_sign_up_params
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:email,:last_name, :first_name, :last_name_kana, :first_name_kana, :address, :postal_code, :phone_number, :user_flag])
-   end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :address, :postal_code, :phone_number, :user_flag])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
-   def configure_account_update_params
-     devise_parameter_sanitizer.permit(:account_update, keys: [:email,:last_name, :first_name, :last_name_kana, :first_name_kana, :address, :postal_code, :phone_number, :user_flag])
-   end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :address, :postal_code, :phone_number, :user_flag])
+  end
 
   # The path used after sign up.
-   def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(resource)
     end_user_path(resource)
-   end
+  end
 
   # The path used after sign up for inactive accounts.
-   def after_inactive_sign_up_path_for(resource)
+  def after_inactive_sign_up_path_for(resource)
     end_user_path(resource)
-   end
+  end
 end
